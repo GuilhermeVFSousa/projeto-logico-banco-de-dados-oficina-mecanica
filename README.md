@@ -80,8 +80,13 @@ SELECT Numero_OS, _idPedido, DataEmissao, Nome, Modelo, Marca, Status_OS, SomaVa
                     INNER JOIN OrdemDeServico AS H ON H.Pedido_idPedido = A.idPedido) AS AAA GROUP BY idPedido) AS ValorTotalDoPedido;
     ```
 
+```sql
+
+```
+
 #### VALOR TOTAL DO PEDIDO SOMANDO TODAS AS PEÇAS DO PEDIDO E MÃO DE OBRA, APRESENTANDO NOME DO CLIENTE, MODELO E MARCA DO VEÍCULO, NUMERO DA ORDEM DE SERVIÇO, DATA DE EMISSÃO DA O.S. E STATUS DA O.S.
-#### PEDIDOS CONCLUÍDOS COM VALOR MAIOR QUE R$1000,00
+##### PEDIDOS CONCLUÍDOS COM VALOR MAIOR QUE R$1000,00
+
 ```sql
 SELECT Numero_OS, _idPedido, DataEmissao, Nome, Modelo, Marca, Status_OS, SomaValorTotalPecas+ValorMaoDeObra AS ValorTotalPedido
 	FROM (SELECT idPedido AS _idPedido, SUM(ValorTotalPecas) AS SomaValorTotalPecas, ServicoNome, ValorMaoDeObra, Nome, Modelo, Marca, Numero_OS, Status_OS, DataEmissao
